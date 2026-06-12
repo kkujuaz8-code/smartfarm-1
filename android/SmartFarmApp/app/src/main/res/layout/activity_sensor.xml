@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light">
+
+    <View
+        android:id="@+id/viewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/color_primary_green"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/headerContent"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="#FFFFFF"
+            android:contentDescription="뒤로가기"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="🌡 실시간 센서 &amp; 제어"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerContent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                            <TextView android:text="온도" android:textSize="14sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                            <TextView android:id="@+id/tvRealTemp" android:text="--.-°" android:textSize="22sp" android:textStyle="bold" android:textColor="#E53935" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                            <TextView android:text="습도" android:textSize="14sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                            <TextView android:id="@+id/tvRealHumid" android:text="--.-%" android:textSize="22sp" android:textStyle="bold" android:textColor="#1E88E5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                            <TextView android:text="토양수분" android:textSize="14sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                            <TextView android:id="@+id/tvRealSoil" android:text="--.-%" android:textSize="22sp" android:textStyle="bold" android:textColor="#4CAF50" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginVertical="15dp"/>
+
+                    <Button
+                        android:id="@+id/btnWater"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:text="🚿 원격 물주기 실행"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="@color/color_accent_blue"
+                        app:cornerRadius="10dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <Spinner
+                android:id="@+id/spinnerDevice"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:paddingHorizontal="16dp" />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="15dp">
+                <RadioButton android:id="@+id/btnHour" android:text="시간별" android:checked="true" android:layout_marginEnd="15dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <RadioButton android:id="@+id/btnDay" android:text="일별" android:layout_marginEnd="15dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <RadioButton android:id="@+id/btnMonth" android:text="월별" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_marginStart="10dp">
+                <TextView android:text="🌡 온도 그래프" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvAvgTemp" android:text="평균: --.-°" android:textColor="@color/text_secondary" android:layout_weight="1" android:gravity="end" android:layout_marginEnd="10dp" android:layout_width="0dp" android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="220dp" app:cardCornerRadius="15dp" app:cardElevation="4dp" android:layout_marginBottom="25dp">
+                <com.github.mikephil.charting.charts.LineChart android:id="@+id/chartTemp" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_marginStart="10dp">
+                <TextView android:text="💧 습도 그래프" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvAvgHumid" android:text="평균: --.-%" android:textColor="@color/text_secondary" android:layout_weight="1" android:gravity="end" android:layout_marginEnd="10dp" android:layout_width="0dp" android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="220dp" app:cardCornerRadius="15dp" app:cardElevation="4dp" android:layout_marginBottom="25dp">
+                <com.github.mikephil.charting.charts.LineChart android:id="@+id/chartHumid" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_marginStart="10dp">
+                <TextView android:text="🌱 토양수분 그래프" android:textStyle="bold" android:textColor="@color/text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvAvgSoil" android:text="평균: --.-%" android:textColor="@color/text_secondary" android:layout_weight="1" android:gravity="end" android:layout_marginEnd="10dp" android:layout_width="0dp" android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="220dp" app:cardCornerRadius="15dp" app:cardElevation="4dp" android:layout_marginBottom="20dp">
+                <com.github.mikephil.charting.charts.LineChart android:id="@+id/chartSoil" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
